@@ -55,6 +55,47 @@ notebook.print_info()
 #     """
 #     Make the class with aggregation
 #     """
+
+print("\nTask 2:\t Aggregation.\n")
+
+
+class GuitarString:
+    material: str
+    thickness: float
+
+    def __init__(self, material, thickness):
+        self.material = material
+        self.thickness = thickness
+
+    def info(self):
+        return f"string is made of: {self.material} and is {self.thickness} inches thick."
+
+
+class Guitar:
+    material: str
+    strings: list
+    string_count: int
+
+    def __init__(self, material, strings):
+        self.material = material
+        self.strings = strings
+        self.string_count = self.strings.__len__()
+
+    def print_info(self):
+        print(f"The guitar is made of {self.material} and has {self.string_count} strings:")
+        for i in range(self.string_count):
+            print(f"\t {i} \t {self.strings[i].info()}")
+
+
+string_1 = GuitarString("Metal", 0.12)
+string_2 = GuitarString("Metal", 0.13)
+string_3 = GuitarString("Metal", 0.14)
+string_4 = GuitarString("Metal", 0.15)
+string_5 = GuitarString("Metal", 0.16)
+string_6 = GuitarString("Metal", 0.17)
+g_1 = Guitar("Wood", [string_1, string_2, string_3, string_4, string_5, string_6])
+g_1.print_info()
+
 # 3
 # class Calc:
 #     """
