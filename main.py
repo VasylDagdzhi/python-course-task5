@@ -178,6 +178,33 @@ print(f"Ingredients in use: {pasta.ingredients}")
 #         concert.visitors_count = 1000
 #         print(concert.visitors_count)  # 50
 #     """
+
+print("\nTask 5:\t Concert.\n")
+
+
+class Concert:
+    max_visitors_num: int
+    visitors_count: int
+
+    def __new__(cls, visitors_count):
+        try:
+            if cls.max_visitors_num > visitors_count:
+                cls.visitors_count = visitors_count
+                return cls
+            else:
+                cls.visitors_count = cls.max_visitors_num
+                return cls
+        except AttributeError:
+            print("Max visitor count is not defined.")
+
+
+Concert.max_visitors_num = 50
+concert = Concert(1000)
+print(f"First try with 1000 visitors: {concert.visitors_count}")
+concert_2 = Concert(23)
+print(f"Second try with 23 visitors: {concert_2.visitors_count}")
+concert_3 = Concert(88)
+print(f"Third try with 88 visitors: {concert_3.visitors_count}")
 #
 # 6.
 # class AddressBookDataClass:
