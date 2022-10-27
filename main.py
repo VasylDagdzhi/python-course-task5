@@ -102,6 +102,32 @@ g_1.print_info()
 #     Створіть клас з одним методом "add_nums" та 3 атрибутами, який повертає суму цих атрибутів.
 #     """
 #
+print("\nTask 3:\t Calculator.\n")
+
+
+class Calc:
+    a: float
+    b: float
+    c: float
+
+    def __init__(self, a, b, c):
+        self.a = a
+        self.b = b
+        self.c = c
+
+    # more convenient will be using a static method here
+    @staticmethod
+    def static_add_nums(a, b, c):
+        print(f"The sum of {a}, {b} and {c} is {a + b + c}")
+
+    def add_nums(self):
+        return Calc.static_add_nums(self.a, self.b, self.c)
+
+
+Calc.static_add_nums(2, 3, 9)
+calculator = Calc(2, 18, 99)
+calculator.add_nums()
+
 # 4*.
 # class Pasta:
 #     """
