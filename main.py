@@ -1,3 +1,5 @@
+import collections
+
 # 1.
 # class Laptop:
 #     """
@@ -225,16 +227,14 @@ class AddressBookDataClass:
     birthday: str
     age: int
 
-    def __init__(self, key, name, phone_number, address, email, birthday, age):
-        self.key = key
-        self.name = name
-        self.phone_number = phone_number
-        self.address = address
-        self.email = email
-        self.birthday = birthday
-        self.age = age
 
 # 7. Create the same class (6) but using NamedTuple
+print("\nTask 7:\t Named Tuple.\n")
+
+addressbook = collections.namedtuple("AddressBookDataClass", "key name phone_number address email birthday age")
+addr = addressbook(1, "Pedro", "3890000", "Mexico", "pedro@gmail.com", "11.1.1991", 31)
+print(addr)
+
 # 8.
 # class AddressBook:
 #     """
@@ -243,6 +243,35 @@ class AddressBookDataClass:
 #     Expected result by printing instance of AddressBook: AddressBook(key='', name='', phone_number='', address='',
 #     email='', birthday= '', age='')
 #     """
+print("\nTask 8:\t AddressBook.\n")
+
+
+class AddressBook:
+    key: int
+    name: str
+    phone_number: str
+    home_address: str
+    email: str
+    birthday: str
+    age: int
+
+    def __init__(self, key, name, phone_number, home_address, email, birthday, age):
+        self.key = key
+        self.name = name
+        self.phone_number = phone_number
+        self.home_address = home_address
+        self.email = email
+        self.birthday = birthday
+        self.age = age
+
+    def print_info(self):
+        print(f"[{self.key}]: Name: {self.name} \t {self.phone_number} \n Address: {self.home_address} \t "
+              f"Email: {self.email} \n Birthday: {self.birthday}, Age: {self.age}")
+
+
+address = AddressBook(1, "Pedro", "3890000", "Mexico", "pedro@gmail.com", "11.1.1991", 31)
+address.print_info()
+
 # 9.
 # class Person:
 #     """
@@ -251,6 +280,23 @@ class AddressBookDataClass:
 #     name = "John"
 #     age = 36
 #     country = "USA"
+
+print("\nTask 9:\t Person.\n")
+
+
+class Person:
+    name = "John"
+    age = 36
+    country = "USA"
+
+    def set_age(self, new_age):
+        self.age = new_age
+
+
+j = Person()
+j.set_age(34)
+print(f"Age is: {j.age}.")
+
 #
 # 10.
 # class Student:
@@ -264,3 +310,23 @@ class AddressBookDataClass:
 #     def __init__(self, id, name):
 #         self.id = id
 #         self.name = name
+
+print("\nTask 10:\t Student.\n")
+
+
+class Student:
+    """
+    Add an 'email' attribute of the object student and set its value
+    Assign the new attribute to 'student_email' variable and print it by using getattr
+    """
+    id = 0
+    name = ""
+
+    def __init__(self, student_id, name):
+        self.id = student_id
+        self.name = name
+
+
+joe = Student(1, "Joe")
+joe.email = "joe@gmail.com"
+print(f"{joe.name}'s email is: {joe.__getattribute__('email')}")
