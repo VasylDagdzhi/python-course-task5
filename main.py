@@ -142,6 +142,30 @@ calculator.add_nums()
 #         pasta_2.ingredients will equal to ['bacon', 'parmesan', 'eggs']
 #     """
 #
+print("\nTask 4:\t Cooking.\n")
+
+
+class Pasta:
+    ingredients: list
+
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+
+    def carbonara(self):
+        print("We are using Carbonara.")
+        self.ingredients = ["forcemeat", "tomatoes"]
+
+    def bolognaise(self):
+        print("We are using Bolognaise.")
+        self.ingredients = ['bacon', 'parmesan', 'eggs']
+
+
+pasta = Pasta(["milk", "ice"])
+pasta.carbonara()
+print(f"Ingredients in use: {pasta.ingredients}")
+pasta.bolognaise()
+print(f"Ingredients in use: {pasta.ingredients}")
+
 # 5*.
 # class Concert:
 #     """
