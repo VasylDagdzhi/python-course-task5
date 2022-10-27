@@ -213,6 +213,27 @@ print(f"Third try with 88 visitors: {concert_3.visitors_count}")
 #     birthday (str), age (int)
 #     """
 #
+print("\nTask 6:\t AddressBookDataClass.\n")
+
+
+class AddressBookDataClass:
+    key: int
+    name: str
+    phone_number: str
+    address: str
+    email: str
+    birthday: str
+    age: int
+
+    def __init__(self, key, name, phone_number, address, email, birthday, age):
+        self.key = key
+        self.name = name
+        self.phone_number = phone_number
+        self.address = address
+        self.email = email
+        self.birthday = birthday
+        self.age = age
+
 # 7. Create the same class (6) but using NamedTuple
 # 8.
 # class AddressBook:
