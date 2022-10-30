@@ -321,13 +321,13 @@ class Student:
     """
     id = 0
     name = ""
-    student_email = ""
 
-    def __init__(self, student_id, name, email):
+    def __init__(self, student_id, name):
         self.id = student_id
         self.name = name
-        self.student_email = email
 
 
-joe = Student(1, "Joe", "joe@gmail.com")
-print(f"{joe.name}'s email is: {joe.__getattribute__('student_email')}")
+joe = Student(1, "Joe")
+setattr(joe, "email", "joe@gmail.com")
+student_email = getattr(joe, "email")
+print(f"{joe.name}'s email is: {student_email}")
