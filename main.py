@@ -13,6 +13,15 @@ import collections
 print("Task 1:\t Composition.\n")
 
 
+class Battery:
+    model: str
+    capacity: int
+
+    def __init__(self, model, capacity):
+        self.model = model
+        self.capacity = capacity
+
+
 class PC:
     manufacturer: str
     model: str
@@ -29,22 +38,21 @@ class PC:
 
 class Notebook(PC):
     screen_size: float
-    battery_capacity: int
+    battery: Battery
 
-    def __init__(self, manufacturer, model, price, screen_size, battery_capacity):
+    def __init__(self, manufacturer, model, price, screen_size, battery):
         super().__init__(manufacturer=manufacturer, model=model, price=price)
         self.screen_size = screen_size
-        self.battery_capacity = battery_capacity
+        self.battery = battery
 
     def print_info(self):
         print(
             f"Manufacturer: {self.manufacturer} \t Model: {self.model} \t Screen diagonal: {self.screen_size} \t "
-            f"Battery capacity: {self.battery_capacity} \t Costs: {self.price}")
+            f"Battery model: {self.battery.model}, capacity: {self.battery.capacity} mAh \t Costs: {self.price}")
 
 
 home_pc = PC("Dell", "A1", 2300.88)
-notebook = Notebook("Asus", "571LH", 999.99, 15.6, 4500)
-
+notebook = Notebook("Asus", "571LH", 999.99, 15.6, battery=Battery("Int 450", 4500))
 home_pc.print_info()
 notebook.print_info()
 
@@ -153,19 +161,22 @@ class Pasta:
     def __init__(self, ingredients):
         self.ingredients = ingredients
 
-    def carbonara(self):
+    @classmethod
+    def carbonara(cls):
         print("We are using Carbonara.")
-        self.ingredients = ["forcemeat", "tomatoes"]
+        return cls(["forcemeat", "tomatoes"])
 
-    def bolognaise(self):
+    @classmethod
+    def bolognaise(cls):
         print("We are using Bolognaise.")
-        self.ingredients = ['bacon', 'parmesan', 'eggs']
+        return cls(['bacon', 'parmesan', 'eggs'])
 
 
 pasta = Pasta(["milk", "ice"])
-pasta.carbonara()
 print(f"Ingredients in use: {pasta.ingredients}")
-pasta.bolognaise()
+pasta = Pasta.carbonara()
+print(f"Ingredients in use: {pasta.ingredients}")
+pasta = Pasta.bolognaise()
 print(f"Ingredients in use: {pasta.ingredients}")
 
 # 5*.
@@ -293,9 +304,8 @@ class Person:
         self.age = new_age
 
 
-j = Person()
-j.set_age(34)
-print(f"Age is: {j.age}.")
+Person.age = 10
+print(f"Age is: {Person.age}.")
 
 #
 # 10.
